@@ -1,5 +1,6 @@
 package com.loopenami.hbmod;
 
+import com.loopenami.hbmod.world.entity.ModEntityTypes;
 import com.loopenami.hbmod.item.ModItems;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -23,6 +24,8 @@ public class HBM {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.register(eventBus);
+
+        ModEntityTypes.register(FMLJavaModLoadingContext.get().getModEventBus());
 
         eventBus.addListener(this::setup);
 

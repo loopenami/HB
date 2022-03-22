@@ -20,8 +20,8 @@ apply plugin: 'net.minecraftforge.gradle'
 
 
 version = '0.0.1-1.18.1'
-group = 'com.loopenami.hbmod2022' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'hbmod2022'
+group = 'com.loopenami.hbmod' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'hbmod'
 
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -64,10 +64,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'hbmod2022'
+            property 'forge.enabledGameTestNamespaces', 'hbmod'
 
             mods {
-                hbmod2022 {
+                hbmod {
                     source sourceSets.main
                 }
             }
@@ -81,10 +81,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'hbmod2022'
+            property 'forge.enabledGameTestNamespaces', 'hbmod'
 
             mods {
-                hbmod2022 {
+                hbmod {
                     source sourceSets.main
                 }
             }
@@ -109,10 +109,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'hbmod2022'
+            property 'forge.enabledGameTestNamespaces', 'hbmod'
 
             mods {
-                hbmod2022 {
+                hbmod {
                     source sourceSets.main
                 }
             }
@@ -126,10 +126,10 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', 'hbmod2022', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', 'hbmod', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                hbmod2022 {
+                hbmod {
                     source sourceSets.main
                 }
             }
@@ -173,12 +173,12 @@ dependencies {
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "hbmod2022",
-                "Specification-Vendor"    : "hbmod2022sareus",
+                "Specification-Title"     : "hbmod",
+                "Specification-Vendor"    : "hbmodsareus",
                 "Specification-Version"   : "1", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "hbmod2022sareus",
+                "Implementation-Vendor"   : "hbmodsareus",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
