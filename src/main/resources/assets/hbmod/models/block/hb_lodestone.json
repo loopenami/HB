@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "hbmod:block/hb_lodestone_top",
+    "side": "hbmod:block/hb_lodestone_side"
+  }
+}

@@ -1,6 +1,6 @@
 package com.loopenami.hbmod.world.entity.projectile;
 
-import com.loopenami.hbmod.world.entity.ModEntityTypes;
+import com.loopenami.hbmod.world.entity.ModEntityType;
 import com.loopenami.hbmod.item.ModItems;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -26,7 +26,7 @@ public class LightningArrow extends AbstractArrow {
     }
 
     public LightningArrow(LivingEntity shooter, Level level, Item referenceItem) {
-        super(ModEntityTypes.LIGHTNING_ARROW.get(), shooter, level);
+        super(ModEntityType.LIGHTNING_ARROW.get(), shooter, level);
         this.referenceItem = referenceItem;
     }
 

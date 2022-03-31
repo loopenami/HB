@@ -1,5 +1,8 @@
 {
   "item.hbmod.chaos_sword": "Chaos Sword",
   "item.hbmod.lightning_arrow": "Lightning Arrow",
-  "item.hbmod.blinding_arrow": "Blinding Arrow"
+  "item.hbmod.blinding_arrow": "Blinding Arrow",
+  "item.hbmod.explosion_pickaxe": "Explosion Pickaxe",
+  "item.hbmod.player_compass": "PCompass",
+  "block.hbmod.hb_lodestone": "HBL"
 }

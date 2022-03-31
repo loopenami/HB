@@ -1,11 +1,14 @@
 package com.loopenami.hbmod;
 
-import com.loopenami.hbmod.world.entity.ModEntityTypes;
+import com.loopenami.hbmod.block.ModBlocks;
+import com.loopenami.hbmod.util.ModItemProperties;
+import com.loopenami.hbmod.world.entity.ModEntityType;
 import com.loopenami.hbmod.item.ModItems;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
@@ -25,12 +28,21 @@ public class HBM {
 
         ModItems.register(eventBus);
 
-        ModEntityTypes.register(FMLJavaModLoadingContext.get().getModEventBus());
+        ModBlocks.register(eventBus);
+
+
+
+        ModEntityType.register(FMLJavaModLoadingContext.get().getModEventBus());
 
         eventBus.addListener(this::setup);
+        eventBus.addListener(this::clientSetup);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+    }
+
+    private void clientSetup(final FMLClientSetupEvent event) {
+        ModItemProperties.addCustomItemProperties();
     }
 
     private void setup(final FMLCommonSetupEvent event) {

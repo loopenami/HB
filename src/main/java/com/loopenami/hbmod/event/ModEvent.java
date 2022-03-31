@@ -7,7 +7,7 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = HBM.MOD_ID)
 public class ModEvent {
 
-    public static void lightingArrowHit(ProjectileImpactEvent event) {
+    public static void blindingArrowHit(ProjectileImpactEvent event) {
 
     }
 }

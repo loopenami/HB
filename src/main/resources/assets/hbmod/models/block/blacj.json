@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "all": "hbmod:block/hb_lodestone"
+  }
+}
