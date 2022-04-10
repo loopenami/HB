@@ -1,8 +1,17 @@
 {
-  "item.hbmod.chaos_sword": "Chaos Sword",
-  "item.hbmod.lightning_arrow": "Lightning Arrow",
-  "item.hbmod.blinding_arrow": "Blinding Arrow",
+  "item.hbmod.knockback_sword": "Knockback Sword",
+  "item.hbmod.poison_sword": "Poison Sword",
   "item.hbmod.explosion_pickaxe": "Explosion Pickaxe",
+  "item.hbmod.blinding_arrow": "Blinding Arrow",
+
+
   "item.hbmod.player_compass": "PCompass",
-  "block.hbmod.hb_lodestone": "HBL"
+
+  "item.hbmod.lily_key": "KeyLily",
+
+
+  "block.hbmod.blacj": "Blacj",
+  "block.hbmod.hb_lodestone": "HBL",
+  "key.categories.hbm": "This Doesn't Exist.",
+  "key.traverseToggle": "Traverse Toggle"
 }

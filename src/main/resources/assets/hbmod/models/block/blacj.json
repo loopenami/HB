@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:block/cube_column",
+  "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "hbmod:block/hb_lodestone"
+    "all": "hbmod:block/blacj"
   }
 }

@@ -20,7 +20,7 @@ public class ModBlocks {
             DeferredRegister.create(ForgeRegistries.BLOCKS, HBM.MOD_ID);
     public static final RegistryObject<Block> HB_LODESTONE = registerBlock("hb_lodestone",
             () -> new Block(BlockBehaviour.Properties.of(Material.STONE)
-                    .strength(4f).requiresCorrectToolForDrops()), CreativeModeTab.TAB_MISC);
+                    .strength(-1f).requiresCorrectToolForDrops().explosionResistance(3600000.0F)), CreativeModeTab.TAB_MISC);
 
     public static final RegistryObject<Block> BLACJ = registerBlock("blacj",
             () -> new Block(BlockBehaviour.Properties.of(Material.STONE)

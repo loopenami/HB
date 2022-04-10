@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "hbmod:item/chaos_sword"
+    "layer0": "hbmod:item/poison_sword"
   }
 }

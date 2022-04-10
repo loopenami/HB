@@ -14,7 +14,7 @@ public class ClientModEventSubscriber {
 
     @SubscribeEvent
     public static void onClientSetup(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(ModEntityType.LIGHTNING_ARROW.get(), LightningArrowRenderer::new);
+        event.registerEntityRenderer(ModEntityType.CRAWLIES_ARROW.get(), LightningArrowRenderer::new);
         event.registerEntityRenderer(ModEntityType.BLINDING_ARROW.get(), BlindingArrowRenderer::new);
     }
 }

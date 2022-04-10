@@ -17,6 +17,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.decoration.ItemFrame;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.CompassItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -33,12 +34,12 @@ makeCompass(ModItems.PLAYER_COMPASS.get());
 }
 
 private static void makeCompass(Item item) {
-    ItemProperties.register(item, new ResourceLocation("angle"), new ClampedItemPropertyFunction() {
+    ItemProperties.register(item, new ResourceLocation("angles"), new ClampedItemPropertyFunction() {
         private final ModItemProperties.CompassWobble wobble = new ModItemProperties.CompassWobble();
         private final ModItemProperties.CompassWobble wobbleRandom = new ModItemProperties.CompassWobble();
 
-        public float unclampedCall(ItemStack p_174672_, @Nullable ClientLevel p_174673_, @Nullable LivingEntity p_174674_, int p_174675_) {
-            Entity entity = (Entity)(p_174674_ != null ? p_174674_ : p_174672_.getEntityRepresentation());
+        public float unclampedCall(ItemStack compassInHand, @Nullable ClientLevel p_174673_, @Nullable LivingEntity p_174674_, int p_174675_) {
+            Entity entity = (Entity)(p_174674_ != null ? p_174674_ : compassInHand.getEntityRepresentation());
             if (entity == null) {
                 return 0.0F;
             } else {
@@ -46,7 +47,7 @@ private static void makeCompass(Item item) {
                     p_174673_ = (ClientLevel)entity.level;
                 }
 
-                BlockPos blockpos = PlayerCompassItem.isLodestoneCompass(p_174672_) ? this.getLodestonePosition(p_174673_, p_174672_.getOrCreateTag()) : null;
+                BlockPos blockpos = CompassItem.isLodestoneCompass(compassInHand) ? this.getLodestonePosition(p_174673_, compassInHand.getOrCreateTag()) : null;
                 long i = p_174673_.getGameTime();
                 if (blockpos != null && !(entity.position().distanceToSqr((double)blockpos.getX() + 0.5D, entity.position().y(), (double)blockpos.getZ() + 0.5D) < (double)1.0E-5F)) {
                     boolean flag = p_174674_ instanceof Player && ((Player)p_174674_).isLocalPlayer();
@@ -92,13 +93,13 @@ private static void makeCompass(Item item) {
 
 
         @Nullable
-        private BlockPos getLodestonePosition(Level p_117916_, CompoundTag p_117917_) {
-            boolean flag = p_117917_.contains("LodestonePos");
-            boolean flag1 = p_117917_.contains("LodestoneDimension");
+        private BlockPos getLodestonePosition(Level p_117916_, CompoundTag compoundTag) {
+            boolean flag = compoundTag.contains("HBLodestonePos");
+            boolean flag1 = compoundTag.contains("HBLodestoneDimension");
             if (flag && flag1) {
-                Optional<ResourceKey<Level>> optional = PlayerCompassItem.getLodestoneDimension(p_117917_);
+                Optional<ResourceKey<Level>> optional = PlayerCompassItem.getLodestoneDimension(compoundTag);
                 if (optional.isPresent() && p_117916_.dimension() == optional.get()) {
-                    return NbtUtils.readBlockPos(p_117917_.getCompound("LodestonePos"));
+                    return NbtUtils.readBlockPos(compoundTag.getCompound("HBLodestonePos"));
                 }
             }
 
