@@ -29,10 +29,10 @@ public class Messages {
                 .encoder(PacketTraversing::toBytes)
                 .consumer(PacketTraversing::handle)
                 .add();
-//        net.messageBuilder(PacketSyncManaToClient.class, id(), NetworkDirection.PLAY_TO_CLIENT)
-//                .decoder(PacketSyncManaToClient::new)
-//                .encoder(PacketSyncManaToClient::toBytes)
-//                .consumer(PacketSyncManaToClient::handle)
+//        net.messageBuilder(PacketSyncTraversingToClient.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+//                .decoder(PacketSyncTraversingToClient::new)
+//                .encoder(PacketSyncTraversingToClient::toBytes)
+//                .consumer(PacketSyncTraversingToClient::handle)
 //                .add();
     }
 

@@ -12,17 +12,26 @@ import net.minecraftforge.common.util.LazyOptional;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-public class HBTraversingProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
-    public static Capability<HBTraversing> HB_TRAVERSING = CapabilityManager.get(new CapabilityToken<>(){});
+public class HBIsTraversingProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
+    public static Capability<HBIsTraversing> HB_IS_TRAVERSING = CapabilityManager.get(new CapabilityToken<>(){});
 
-    private HBTraversing HBTraversing = null;
-    private final LazyOptional<HBTraversing> opt = LazyOptional.of(this::createHBTraversing);
+    private HBIsTraversing HBIsTraversing = null;
+    private final LazyOptional<HBIsTraversing> opt = LazyOptional.of(this::createHBIsTraversing);
 
-    private HBTraversing createHBTraversing() {
-        if (HBTraversing == null) {
-            HBTraversing = new HBTraversing();
+    private HBIsTraversing createHBIsTraversing() {
+        if (HBIsTraversing == null) {
+            HBIsTraversing = new HBIsTraversing();
         }
-        return HBTraversing;
+        return HBIsTraversing;
+    }
+
+    @Nonnull
+    @Override
+    public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap) {
+        if (cap == HB_IS_TRAVERSING) {
+            return opt.cast();
+        }
+        return LazyOptional.empty();
     }
 
     @Nonnull
@@ -34,13 +43,13 @@ public class HBTraversingProvider implements ICapabilityProvider, INBTSerializab
     @Override
     public CompoundTag serializeNBT() {
         CompoundTag nbt = new CompoundTag();
-        createHBTraversing().saveNBTData(nbt);
+        createHBIsTraversing().saveNBTData(nbt);
         return nbt;
     }
 
     @Override
     public void deserializeNBT(CompoundTag nbt) {
-        createHBTraversing().loadNBTData(nbt);
+        createHBIsTraversing().loadNBTData(nbt);
     }
 
 }

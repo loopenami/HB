@@ -1,11 +1,9 @@
 package com.loopenami.hbmod.hb.network;
 
-import com.loopenami.hbmod.hb.data.HBTraversing;
-import com.loopenami.hbmod.hb.data.HBTraversingProvider;
+import com.loopenami.hbmod.hb.data.HBAbilityProvider;
+import com.loopenami.hbmod.hb.data.HBIsTraversing;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.MobSpawnType;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
@@ -25,16 +23,7 @@ public class PacketTraversing {
         ctx.enqueueWork(() -> {
             ServerPlayer player = ctx.getSender();
             assert player != null;
-                boolean hbTraversing = player.getCapability(HBTraversingProvider.HB_TRAVERSING)
-                        .map(HBTraversing::isTraversing)
-                        .orElse(false);
-                EntityType.LIGHTNING_BOLT.spawn(player.getLevel(), null, null, player.blockPosition(), MobSpawnType.TRIGGERED, true, true);
-//                if (hbTraversing) {
-//                    player.getCapability(HBTraversingProvider.HB_TRAVERSING).ifPresent(HBTraversing -> HBTraversing.setTraversing(false));
-//                }
-//                if (!hbTraversing) {
-//                    player.getCapability(HBTraversingProvider.HB_TRAVERSING).ifPresent(HBTraversing -> HBTraversing.setTraversing(true));
-//                }
+            player.getCapability(HBAbilityProvider.HB_IS_TRAVERSING).ifPresent(HBIsTraversing::changeTraverseStatus);
         });
         return true;
     }

@@ -1,7 +1,7 @@
 package com.loopenami.hbmod.world.entity.projectile;
 
-import com.loopenami.hbmod.world.entity.ModEntityType;
 import com.loopenami.hbmod.item.ModItems;
+import com.loopenami.hbmod.world.entity.ModEntityType;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -10,6 +10,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 
@@ -36,6 +37,8 @@ public class CrawliesArrow extends AbstractArrow {
                 entity.spawn(world, null, null, pResult.getEntity().blockPosition(), MobSpawnType.TRIGGERED, true, true);
                 if (!(pResult.getEntity() instanceof Player) && pResult.getEntity() instanceof LivingEntity) {
                     pResult.getEntity().kill();
+                    this.level.explode(this, this.getX(), this.getY(), this.getZ(), 4.0f, true, Explosion.BlockInteraction.NONE);
+
                 }
                 counter += 1;
             }

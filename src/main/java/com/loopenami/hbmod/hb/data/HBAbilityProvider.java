@@ -13,16 +13,26 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class HBAbilityProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
-    public static Capability<HBAbilities> HB_TRAVERSING = CapabilityManager.get(new CapabilityToken<>(){});
+    public static Capability<HBIsTraversing> HB_IS_TRAVERSING = CapabilityManager.get(new CapabilityToken<>(){});
 
-    private HBAbilities HBAbilities = null;
-    private final LazyOptional<HBAbilities> opt = LazyOptional.of(this::createHBAbilities);
+    private HBIsTraversing hbIsTraversing = null;
+    private final LazyOptional<HBIsTraversing> opt = LazyOptional.of(this::createHBIsTraversing);
 
-    private HBAbilities createHBAbilities() {
-        if (HBAbilities == null) {
-            HBAbilities = new HBAbilities();
+    @Nonnull
+    private HBIsTraversing createHBIsTraversing() {
+        if (hbIsTraversing == null) {
+            hbIsTraversing = new HBIsTraversing();
         }
-        return HBAbilities;
+        return hbIsTraversing;
+    }
+
+    @Nonnull
+    @Override
+    public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap) {
+        if (cap == HB_IS_TRAVERSING) {
+            return opt.cast();
+        }
+        return LazyOptional.empty();
     }
 
     @Nonnull
@@ -34,13 +44,12 @@ public class HBAbilityProvider implements ICapabilityProvider, INBTSerializable<
     @Override
     public CompoundTag serializeNBT() {
         CompoundTag nbt = new CompoundTag();
-        createHBAbilities().saveNBTData(nbt);
+        createHBIsTraversing().saveNBTData(nbt);
         return nbt;
     }
 
     @Override
     public void deserializeNBT(CompoundTag nbt) {
-        createHBAbilities().loadNBTData(nbt);
+        createHBIsTraversing().loadNBTData(nbt);
     }
-
 }
