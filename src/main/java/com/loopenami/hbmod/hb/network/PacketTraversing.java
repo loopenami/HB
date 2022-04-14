@@ -23,6 +23,7 @@ public class PacketTraversing {
         ctx.enqueueWork(() -> {
             ServerPlayer player = ctx.getSender();
             assert player != null;
+            //works
             player.getCapability(HBAbilityProvider.HB_IS_TRAVERSING).ifPresent(HBIsTraversing::changeTraverseStatus);
         });
         return true;

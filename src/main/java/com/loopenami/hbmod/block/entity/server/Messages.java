@@ -1,6 +1,7 @@
 package com.loopenami.hbmod.block.entity.server;
 
 import com.loopenami.hbmod.HBM;
+import com.loopenami.hbmod.hb.network.PacketSyncTraversingToClient;
 import com.loopenami.hbmod.hb.network.PacketTraversing;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -29,11 +30,11 @@ public class Messages {
                 .encoder(PacketTraversing::toBytes)
                 .consumer(PacketTraversing::handle)
                 .add();
-//        net.messageBuilder(PacketSyncTraversingToClient.class, id(), NetworkDirection.PLAY_TO_CLIENT)
-//                .decoder(PacketSyncTraversingToClient::new)
-//                .encoder(PacketSyncTraversingToClient::toBytes)
-//                .consumer(PacketSyncTraversingToClient::handle)
-//                .add();
+        net.messageBuilder(PacketSyncTraversingToClient.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(PacketSyncTraversingToClient::new)
+                .encoder(PacketSyncTraversingToClient::toBytes)
+                .consumer(PacketSyncTraversingToClient::handle)
+                .add();
     }
 
     public static <MSG> void sendToServer(MSG message) {

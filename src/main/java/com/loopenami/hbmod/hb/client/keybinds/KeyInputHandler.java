@@ -1,4 +1,4 @@
-package com.loopenami.hbmod.hb.client;
+package com.loopenami.hbmod.hb.client.keybinds;
 
 import com.loopenami.hbmod.block.entity.server.Messages;
 import com.loopenami.hbmod.hb.network.PacketTraversing;

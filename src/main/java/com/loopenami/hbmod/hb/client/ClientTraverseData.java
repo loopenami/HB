@@ -8,6 +8,10 @@ public class ClientTraverseData {
         ClientTraverseData.isTraversing = isTraversing;
     }
 
+    public static void changeTraverseStatus() {
+        ClientTraverseData.isTraversing = !isTraversing;
+    }
+
     public static boolean isTraversing() {
         return isTraversing;
     }

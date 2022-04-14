@@ -1,7 +1,11 @@
 package com.loopenami.hbmod.hb.data;
 
 import com.loopenami.hbmod.HBM;
+import com.loopenami.hbmod.hb.client.ClientTraverseData;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
@@ -27,6 +31,21 @@ public class HBEvents {
     }
 
     public static void onWorldTick(TickEvent.WorldTickEvent event) {
-        HBAbilityManager.tick(event.world);
+        event.world.players().forEach(player -> {
+            if ((player instanceof ServerPlayer serverPlayer) && serverPlayer.getCapability(HBIsTraversingProvider.HB_IS_TRAVERSING).map(HBIsTraversing::isTraversing).orElse(false)) {
+                HBAbilityManager.tick(event.world);
+            }
+        });
+    }
+
+    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+        int counter = 0;
+        if(event.player.getCapability(HBIsTraversingProvider.HB_IS_TRAVERSING).isPresent()){
+        if(ClientTraverseData.isTraversing()) {
+            event.player.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY,20));
+        } else{
+            event.player.removeEffect(MobEffects.INVISIBILITY);
+        }
+        }
     }
 }

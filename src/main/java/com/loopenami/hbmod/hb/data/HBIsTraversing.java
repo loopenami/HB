@@ -6,7 +6,6 @@ public class HBIsTraversing {
     //stores boolean from keybind
         private boolean isTraversing;
 
-
         public void setTraversing(boolean isTraversing) {
             this.isTraversing = isTraversing;
         }

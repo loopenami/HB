@@ -1,4 +1,4 @@
-package com.loopenami.hbmod.hb.client;
+package com.loopenami.hbmod.hb.client.keybinds;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.client.KeyMapping;

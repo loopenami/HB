@@ -15,7 +15,8 @@ public class PacketSyncTraversingToClient {
     }
 
     public PacketSyncTraversingToClient(FriendlyByteBuf buf) {
-        isTraversing = buf.readBoolean();}
+        isTraversing = buf.readBoolean();
+     }
 
     public void toBytes(FriendlyByteBuf buf) {
         buf.writeBoolean(isTraversing);
@@ -29,6 +30,7 @@ public class PacketSyncTraversingToClient {
             // this packet needs to be available server-side too
             ClientTraverseData.set(isTraversing);
         });
+
         return true;
     }
 }

@@ -3,8 +3,8 @@ package com.loopenami.hbmod;
 import com.loopenami.hbmod.block.ModBlocks;
 import com.loopenami.hbmod.block.entity.ModBlockEntities;
 import com.loopenami.hbmod.block.entity.server.Messages;
-import com.loopenami.hbmod.hb.client.KeyBindings;
-import com.loopenami.hbmod.hb.client.KeyInputHandler;
+import com.loopenami.hbmod.hb.client.keybinds.KeyBindings;
+import com.loopenami.hbmod.hb.client.keybinds.KeyInputHandler;
 import com.loopenami.hbmod.hb.data.HBEvents;
 import com.loopenami.hbmod.item.ModItems;
 import com.loopenami.hbmod.network.message.PacketHandler;
@@ -47,6 +47,7 @@ public class HBM {
 
         MinecraftForge.EVENT_BUS.addGenericListener(Entity.class, HBEvents::onAttachCapabilitiesToPlayer);
         MinecraftForge.EVENT_BUS.addListener(HBEvents::onWorldTick);
+        MinecraftForge.EVENT_BUS.addListener(HBEvents::onPlayerTick);
 
 
         //HB
