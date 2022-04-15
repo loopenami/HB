@@ -1,13 +1,11 @@
 package com.loopenami.hbmod.block;
 
 import com.loopenami.hbmod.HBM;
-import com.loopenami.hbmod.block.custom.TriggerChestBlock;
 import com.loopenami.hbmod.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -23,8 +21,6 @@ public class ModBlocks {
     public static final RegistryObject<Block> HB_LODESTONE = registerBlock("hb_lodestone",
             () -> new Block(BlockBehaviour.Properties.of(Material.STONE)
                     .strength(-1f).requiresCorrectToolForDrops().explosionResistance(3600000.0F)), CreativeModeTab.TAB_MISC);
-
-    public static final RegistryObject<TriggerChestBlock> TRIGGER_CHEST = registerBlock("trigger_chest", () -> new TriggerChestBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(2.5F).sound(SoundType.WOOD)), CreativeModeTab.TAB_MISC);
 
     public static final RegistryObject<Block> BLACJ = registerBlock("blacj",
             () -> new Block(BlockBehaviour.Properties.of(Material.STONE)

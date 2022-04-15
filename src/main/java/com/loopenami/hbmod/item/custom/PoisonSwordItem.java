@@ -18,4 +18,5 @@ public class PoisonSwordItem extends SwordItem {
         pTarget.addEffect(new MobEffectInstance(MobEffects.POISON,200), pAttacker);
         return super.hurtEnemy(pStack, pTarget, pAttacker);
     }
+
 }

@@ -1,6 +1,8 @@
 package com.loopenami.hbmod.item.custom;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PickaxeItem;
@@ -18,6 +20,7 @@ public class ExplosionPickaxeItem extends PickaxeItem {
     @Override
     public boolean mineBlock(ItemStack pStack, Level pLevel, BlockState pState, BlockPos pPos, LivingEntity pEntityLiving) {
         if (!(pState.getBlock() instanceof FireBlock)) {
+            pEntityLiving.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 20,Integer.MAX_VALUE,true,false,false));
             pLevel.explode(null, pPos.getX(), pPos.getY(), pPos.getZ(), 5.0f, false, Explosion.BlockInteraction.DESTROY);
         }
         return super.mineBlock(pStack, pLevel, pState, pPos, pEntityLiving);

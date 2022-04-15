@@ -37,7 +37,7 @@ public class CrawliesArrow extends AbstractArrow {
                 entity.spawn(world, null, null, pResult.getEntity().blockPosition(), MobSpawnType.TRIGGERED, true, true);
                 if (!(pResult.getEntity() instanceof Player) && pResult.getEntity() instanceof LivingEntity) {
                     pResult.getEntity().kill();
-                    this.level.explode(this, this.getX(), this.getY(), this.getZ(), 4.0f, true, Explosion.BlockInteraction.NONE);
+                    this.level.explode(this, this.getX(), this.getY(), this.getZ(), 1.0f, true, Explosion.BlockInteraction.NONE);
 
                 }
                 counter += 1;

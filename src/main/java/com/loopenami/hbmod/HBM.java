@@ -1,16 +1,9 @@
 package com.loopenami.hbmod;
 
 import com.loopenami.hbmod.block.ModBlocks;
-import com.loopenami.hbmod.block.entity.ModBlockEntities;
-import com.loopenami.hbmod.block.entity.server.Messages;
-import com.loopenami.hbmod.hb.client.keybinds.KeyBindings;
-import com.loopenami.hbmod.hb.client.keybinds.KeyInputHandler;
-import com.loopenami.hbmod.hb.data.HBEvents;
 import com.loopenami.hbmod.item.ModItems;
-import com.loopenami.hbmod.network.message.PacketHandler;
 import com.loopenami.hbmod.util.ModItemProperties;
 import com.loopenami.hbmod.world.entity.ModEntityType;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -39,19 +32,19 @@ public class HBM {
 
         ModEntityType.register(FMLJavaModLoadingContext.get().getModEventBus());
 
-        ModBlockEntities.register(eventBus);
+//        ModBlockEntities.register(eventBus);
 
         eventBus.addListener(this::setup);
         eventBus.addListener(this::clientSetup);
 
 
-        MinecraftForge.EVENT_BUS.addGenericListener(Entity.class, HBEvents::onAttachCapabilitiesToPlayer);
-        MinecraftForge.EVENT_BUS.addListener(HBEvents::onWorldTick);
-        MinecraftForge.EVENT_BUS.addListener(HBEvents::onPlayerTick);
-
-
-        //HB
-        eventBus.addListener(HBEvents::onRegisterAbilities);
+//        MinecraftForge.EVENT_BUS.addGenericListener(Entity.class, HBEvents::onAttachCapabilitiesToPlayer);
+//        MinecraftForge.EVENT_BUS.addListener(HBEvents::onWorldTick);
+//        MinecraftForge.EVENT_BUS.addListener(HBEvents::onPlayerTick);
+//
+//
+//        //HB
+//        eventBus.addListener(HBEvents::onRegisterAbilities);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -59,17 +52,17 @@ public class HBM {
 
     private void clientSetup(final FMLClientSetupEvent event) {
         ModItemProperties.addCustomItemProperties();
-        MinecraftForge.EVENT_BUS.addListener(KeyInputHandler::onKeyInput);
-
-        KeyBindings.init();
+//        MinecraftForge.EVENT_BUS.addListener(KeyInputHandler::onKeyInput);
+//
+//        KeyBindings.init();
     }
 
     private void setup(final FMLCommonSetupEvent event) {
         // some preinit code
         LOGGER.info("HELLO FROM PREINIT");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
-        Messages.register();
-        PacketHandler.init();
+//        Messages.register();
+//        PacketHandler.init();
 
     }
 }

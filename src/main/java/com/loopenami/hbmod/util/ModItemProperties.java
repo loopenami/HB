@@ -31,6 +31,7 @@ import java.util.Optional;
 public class ModItemProperties {
 public static void addCustomItemProperties() {
 makeCompass(ModItems.PLAYER_COMPASS.get());
+//makeCompass(ModItems.HB_COMPASS.get());
 }
 
 private static void makeCompass(Item item) {
